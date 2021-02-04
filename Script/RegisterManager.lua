@@ -115,8 +115,21 @@ function GatewayServer.RegisterManager:GenerateUserId()
 		local k = 1
 		while true do
 			if not(k <= 100) then break end
-			local min = math.pow(10, i - 1)
-			local max = math.pow(10, i) - 1
+			local min = 1
+			local p = 1
+			while true do
+				if not(p < i) then break end
+				min = min * 10
+				p = p+(1)
+			end
+			local max = 1
+			local p = 1
+			while true do
+				if not(p <= i) then break end
+				max = max * 10
+				p = p+(1)
+			end
+			max = max - 1
 			local user_id = tostring(math.random(min, max))
 			local error, count = A_MysqlSystem:SelectCount(___all_struct[90250184], "user_id", user_id)
 			if error ~= nil then
