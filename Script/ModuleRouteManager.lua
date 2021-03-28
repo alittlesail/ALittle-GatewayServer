@@ -104,11 +104,11 @@ function GatewayServer.ModuleRouteManager:HandleAnySessionDisconnected(event)
 		return
 	end
 	self._route_map[event.connect_key] = nil
-	ALittle.Log("模块断开了, route:" .. ALittle.GetRouteName(event.route_type, event.route_num))
+	ALittle.Log("GatewayServer 模块断开了, route:" .. ALittle.GetRouteName(event.route_type, event.route_num))
 end
 
 function GatewayServer.ModuleRouteManager:HandleUpdateRouteInfo(client, msg)
-	ALittle.Log("新的模块连进来了, route:" .. ALittle.GetRouteName(client.route_type, client.route_num))
+	ALittle.Log("GatewayServer 新的模块连进来了, route:" .. ALittle.GetRouteName(client.route_type, client.route_num))
 	local param = {}
 	param.route_type = client.route_type
 	param.route_weight = msg.route_weight
